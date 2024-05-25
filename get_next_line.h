@@ -24,7 +24,7 @@
 
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(char *s);
-int check_and_clear(char *buf);
-char	*get_next_line(int fd);
+int	check_and_clear(char *line);
+char *get_next_line(int fd);
 
 #endif

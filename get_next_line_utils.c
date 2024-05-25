@@ -31,12 +31,14 @@ char	*ft_strjoin(char *s1, char *s2)
 	char	*str;
 	int		i;
 	int		j;
+	size_t 	total_len;
 
 	if (!s1 || !s2)
 		return (NULL);
 	i = 0;
 	j = 0;
-	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	total_len = (ft_strlen(s1) + ft_strlen(s2)) + 1;
+	str = malloc(total_len);
 	if (!str)
 		return (NULL);
 	while (s1[i])
@@ -54,7 +56,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-int	check_and_clear(char *buf)
+int	check_and_clear(char *line)
 {
 	int	i;
 	int	j;
@@ -63,17 +65,15 @@ int	check_and_clear(char *buf)
 	i = 0;
 	j = 0;
 	flag = 0;
-	if (!buf)
+	if (!line)
 		return (0);
-	while (buf[i])
+	while (line[i])
 	{
 		if (flag == 1)
-			buf[j++] = buf[i];
-		if (buf[i] == '\n')
+			line[j++] = line[i];
+		if (line[i] == '\n')
 			flag = 1;
-		buf[i++] = 0;
+		line[i++] = 0;
 	}
 	return (flag);
 }
-
-
