@@ -14,7 +14,7 @@
 
 char *get_next_line(int fd)
 {
-    static char line[BUFFER_SIZE + 1];
+    static char line[BUFFER_SIZE + 1] = {0};
     char *gnl;
     int bytes_read;
 
@@ -25,21 +25,21 @@ char *get_next_line(int fd)
         return NULL;
     gnl[0] = '\0';
     gnl = ft_strjoin(gnl, line);
-    if (check_and_clear(line))
+    if (check_and_clear(line) == 1)
         return gnl;
     bytes_read = read(fd, line, BUFFER_SIZE);
+    if (bytes_read <= 0  && (!*gnl))
+    {
+        free(gnl);
+        return NULL;
+    }
     while (bytes_read > 0)
     {
         line[bytes_read] = '\0';
         gnl = ft_strjoin(gnl, line);
-        if (check_and_clear(line))
+        if (check_and_clear(line) == 1)
             break;
         bytes_read = read(fd, line, BUFFER_SIZE);
-    }
-    if (bytes_read < 0 || (bytes_read == 0 && !(*gnl)))
-    {
-        free(gnl);
-        return NULL;
     }
     return gnl;
 }

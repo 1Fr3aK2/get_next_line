@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10000000
+#  define BUFFER_SIZE 5
 # endif
 
 # include <fcntl.h>
@@ -25,7 +25,6 @@
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(char *s);
 int check_and_clear(char *buf);
-
 char	*get_next_line(int fd);
 
 #endif
