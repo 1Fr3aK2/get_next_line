@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl_utils.c                                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: raamorim <raamorim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 19:18:06 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/21 19:18:06 by marvin           ###   ########.fr       */
+/*   Created: 2024/05/27 13:40:08 by raamorim          #+#    #+#             */
+/*   Updated: 2024/05/27 13:40:08 by raamorim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,12 @@ char	*ft_strjoin(char *s1, char *s2)
 	char	*str;
 	int		i;
 	int		j;
-	size_t 	total_len;
 
 	if (!s1 || !s2)
 		return (NULL);
 	i = 0;
 	j = 0;
-	total_len = (ft_strlen(s1) + ft_strlen(s2)) + 1;
-	str = malloc(total_len);
+	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str)
 		return (NULL);
 	while (s1[i])
@@ -76,4 +74,10 @@ int	check_and_clear(char *line)
 		line[i++] = 0;
 	}
 	return (flag);
+}
+
+char	*free_gnl(char *gnl)
+{
+	free(gnl);
+	return (NULL);
 }
