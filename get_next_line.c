@@ -28,7 +28,7 @@ char	*get_next_line(int fd)
 	if (check_and_clear(line) == 1)
 		return (gnl);
 	bytes_read = read(fd, line, BUFFER_SIZE);
-	if (bytes_read <= 0 && !(*gnl))
+	if (bytes_read <= 0 && (!*gnl))
 		return (free_gnl(gnl));
 	while (bytes_read > 0)
 	{

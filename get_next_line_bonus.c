@@ -6,7 +6,7 @@
 /*   By: raamorim <raamorim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 02:22:01 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/27 13:55:09 by raamorim         ###   ########.fr       */
+/*   Updated: 2024/05/27 16:26:58 by raamorim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*get_next_line(int fd)
 	if (check_and_clear(line[fd]) == 1)
 		return (gnl);
 	bytes_read = read(fd, line[fd], BUFFER_SIZE);
-	if (bytes_read <= 0 && !(*gnl))
+	if (bytes_read <= 0 && (!*gnl))
 		return (free_gnl(gnl));
 	while (bytes_read > 0)
 	{
@@ -41,36 +41,50 @@ char	*get_next_line(int fd)
 	return (gnl);
 }
 
-/* int main() {
-	// Suponha que você tenha três arquivos abertos simultaneamente
-	FILE *file1 = fopen("arquivo1.txt", "r");
-	FILE *file2 = fopen("arquivo2.txt", "r");
-	FILE *file3 = fopen("arquivo3.txt", "r");
+/* int main()
+{
+    int fd1, fd2, fd3;
+    char *line;
 
-	// Verifica se os arquivos foram abertos corretamente
-	if (file1 == NULL || file2 == NULL || file3 == NULL) {
-		perror("Erro ao abrir arquivo");
-		return (EXIT_FAILURE);
-	}
+    fd1 = open("example.txt", O_RDONLY);
+    if (fd1 < 0)
+    {
+        perror("Error opening example.txt");
+        return (1);
+    }
+    fd2 = open("example2.txt", O_RDONLY);
+    if (fd2 < 0)
+    {
+        perror("Error opening example2.txt");
+        close(fd1);
+        return (1);
+    }
+    fd3 = open("example3.txt", O_RDONLY);
+    if (fd3 < 0)
+    {
+        perror("Error opening example3.txt");
+        close(fd1);
+        close(fd2);
+        return (1);
+    }
+    while ((line = get_next_line(fd1)) != NULL)
+    {
+        printf("%s\n", line);
+        free(line);
+    }
+    while ((line = get_next_line(fd2)) != NULL)
+    {
+        printf("%s\n", line);
+        free(line);
+    }
+    while ((line = get_next_line(fd3)) != NULL)
+    {
+        printf("%s\n", line);
+        free(line);
+    }
+    close(fd1);
+    close(fd2);
+    close(fd3);
 
-	// Lê e imprime as linhas dos arquivos usando get_next_line
-	char *linha1 = get_next_line(fileno(file1));
-	char *linha2 = get_next_line(fileno(file2));
-	char *linha3 = get_next_line(fileno(file3));
-
-	printf("Linha do arquivo1.txt: %s\n", linha1);
-	printf("Linha do arquivo2.txt: %s\n", linha2);
-	printf("Linha do arquivo3.txt: %s\n", linha3);
-
-	// Libera a memória alocada para as linhas
-	free(linha1);
-	free(linha2);
-	free(linha3);
-
-	// Fecha os arquivos
-	fclose(file1);
-	fclose(file2);
-	fclose(file3);
-
-	return (EXIT_SUCCESS);
+    return (0);
 } */
