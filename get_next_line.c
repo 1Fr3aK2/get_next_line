@@ -14,11 +14,11 @@
 
 char	*get_next_line(int fd)
 {
-	static char	line[BUFFER_SIZE + 1] = {0};
+	static char	line[BUFFER_SIZE + 1];
 	char		*gnl;
 	int			bytes_read;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, line, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	gnl = malloc(1);
 	if (!gnl)
