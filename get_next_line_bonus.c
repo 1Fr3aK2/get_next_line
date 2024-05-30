@@ -6,7 +6,7 @@
 /*   By: raamorim <raamorim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 02:22:01 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/28 17:35:22 by raamorim         ###   ########.fr       */
+/*   Updated: 2024/05/30 18:58:56 by raamorim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || fd >= FOPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
-	gnl = malloc(1);
+	gnl = malloc(1 * sizeof(char));
 	if (!gnl)
 		return (NULL);
 	gnl[0] = '\0';

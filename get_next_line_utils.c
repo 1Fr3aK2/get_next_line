@@ -71,7 +71,7 @@ int	check_and_clear(char *line)
 			line[j++] = line[i];
 		if (line[i] == '\n')
 			flag = 1;
-		line[i++] = 0;
+		line[i++] = '\0';
 	}
 	return (flag);
 }

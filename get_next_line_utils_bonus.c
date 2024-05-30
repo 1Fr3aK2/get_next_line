@@ -6,7 +6,7 @@
 /*   By: raamorim <raamorim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 02:21:58 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/29 18:28:53 by raamorim         ###   ########.fr       */
+/*   Updated: 2024/05/30 18:59:17 by raamorim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	check_and_clear(char *line)
 			line[j++] = line[i];
 		if (line[i] == '\n')
 			flag = 1;
-		line[i++] = 0;
+		line[i++] = '\0';
 	}
 	return (flag);
 }

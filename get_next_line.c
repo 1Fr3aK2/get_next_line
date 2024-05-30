@@ -20,7 +20,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	gnl = malloc(1);
+	gnl = malloc(1 * sizeof(char));
 	if (!gnl)
 		return (NULL);
 	gnl[0] = '\0';
